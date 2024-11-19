@@ -94,9 +94,6 @@ def process_video(configs):
         video_writer.release()
         print("Video has been written to:", output_path)
 
-
-import cv2
-
 def plot_detection(img, ball_pos, seg_img, events):
     """Show the predicted information in the image."""
 
@@ -105,11 +102,6 @@ def plot_detection(img, ball_pos, seg_img, events):
     
     event_name = 'is bounce: {:.2f}, is net: {:.2f}'.format(events[0], events[1])
     img = cv2.putText(img, event_name, (100, 200), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 1, cv2.LINE_AA)
-    
-    # Add a green border if bounce is above 0.7
-    if events[0] > 0.2:
-        border_thickness = 10
-        img = cv2.copyMakeBorder(img, border_thickness, border_thickness, border_thickness, border_thickness, cv2.BORDER_CONSTANT, value=(0, 255, 0))
     
     return img
 

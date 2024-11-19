@@ -9,13 +9,45 @@ WHAM Repo: https://github.com/yohanshin/WHAM
 
 ## Setup Guide
 
+### Prerequisites
+
+To ensure smooth setup and functionality, make sure your system meets the following requirements:
+- Operating System: Linux or Windows Subsystem for Linux (WSL)
+- Graphics: Nvidia GPU with CUDA support.
+
+### Overview
+
+TTNet: Used to detect ball position and bounce
+WHAM: Used to detect player movements
+WHAM_TO_BLENDER: Used to take WHAM ```.pkl``` output and export it to blender
+Unity: Used to render the entire scene
+
 ### 1. TTNet
 
-TODO:
+Full Instructions [Here](TTNet/README.md)
+
+```bash
+conda create -n ttnet python=3.9
+conda activate ttnet
+
+pip install -U -r requirement.txt
+
+sudo apt-get install libturbojpeg
+pip install PyTurboJPEG
+
+# WSL Users: fix cv2.imshow()
+sudo apt-get install libgl1-mesa-glx
+sudo apt-get install xdg-utils
+```
 
 ### 2. WHAM
 
-TODO: 
+Please see [Installation](WHAM/docs/INSTALL.md) for details.
+
+Usage:
+```
+python demo.py --video examples/IMG_9732.mov --visualize --save_pkl
+```
 
 ### 3. WHAM TO BLENDER
 
