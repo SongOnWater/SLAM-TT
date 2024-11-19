@@ -1,9 +1,8 @@
 # SLAM-TT
 
-[![python-image]][python-url]
-[![pytorch-image]][pytorch-url]
-
-TTNet Repo: https://github.com/maudzung/TTNet-Real-time-Analysis-System-for-Table-Tennis-Pytorch
+Based on:
+TTNet Repo: https://github.com/AugustRushG/TTNet-Real-time-Analysis-System-for-Table-Tennis-Pytorch
+WHAM Repo: https://github.com/yohanshin/WHAM
 
 ---
 
