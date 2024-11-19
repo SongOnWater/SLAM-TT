@@ -1,3 +1,7 @@
+WHAM_TO_BLENDER/*
+!WHAM_TO_BLENDER/*.blend
+
+
 dataset/
 *.idea*
 logs/
