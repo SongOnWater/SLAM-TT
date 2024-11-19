@@ -14,7 +14,7 @@ from models.model_utils import create_model, load_pretrained_model
 from config.config import parse_configs
 from utils.post_processing import post_processing
 from utils.misc import time_synchronized
-from pose.detect_pose import detect_pose
+# from pose.detect_pose import detect_pose
 
 def process_video(configs):
     # Load the video and model
@@ -59,13 +59,13 @@ def process_video(configs):
             # If it bounced, find position relative to table
 
             # Get the landmarks for left and right
-            right_world_landmarks = detect_pose(img=img, blackout_left=True, frame_timestamp_ms=frame_timestamp_ms)
-            left_world_landmarks = detect_pose(img=img, blackout_left=False, frame_timestamp_ms=frame_timestamp_ms)
+            # right_world_landmarks = detect_pose(img=img, blackout_left=True, frame_timestamp_ms=frame_timestamp_ms)
+            # left_world_landmarks = detect_pose(img=img, blackout_left=False, frame_timestamp_ms=frame_timestamp_ms)
 
             frame_data = {
                 "frame": frame_cnt,
-                "right_landmarks": right_world_landmarks,
-                "left_landmarks": left_world_landmarks,
+                # "right_landmarks": right_world_landmarks,
+                # "left_landmarks": left_world_landmarks,
                 "ball_pos": prediction_ball_final
             }
             output_json_data["frames"].append(frame_data)
