@@ -15,6 +15,8 @@ To ensure smooth setup and functionality, make sure your system meets the follow
 - Operating System: Linux or Windows Subsystem for Linux (WSL)
 - Graphics: Nvidia GPU with CUDA support.
 
+Install [conda](https://docs.anaconda.com/miniconda/install/#quick-command-line-install)
+
 ### Overview
 
 TTNet: Used to detect ball position and bounce
@@ -42,9 +44,9 @@ sudo apt-get install xdg-utils
 
 ### 2. WHAM
 
-Please see [Installation](WHAM/docs/INSTALL.md) for details.
+Start here: [Installation](https://github.com/yohanshin/WHAM/blob/main/docs/INSTALL.md)
 
-Usage:
+Usage (replace with any video path):
 ```
 python demo.py --video examples/IMG_9732.mov --visualize --save_pkl
 ```
