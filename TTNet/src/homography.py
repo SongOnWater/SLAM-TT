@@ -15,6 +15,9 @@ from config.config import parse_configs
 from utils.post_processing import post_processing
 from utils.misc import time_synchronized
 
+TABLE_LENGTH = 2.74  # meters
+TABLE_WIDTH = 1.525  # meters
+
 def extract_table_mask(seg_img):
     """Extract the table mask from the segmentation image."""
     # Assuming blue index represents the table, extract only the blue channel
@@ -36,38 +39,43 @@ def find_table_bounds(seg_img):
     largest_contour = max(contours, key=cv2.contourArea)
 
     # Approximate the contour to a polygon (4 corners for the table)
-    epsilon = 0.02 * cv2.arcLength(largest_contour, True)
+    epsilon = 0.01 * cv2.arcLength(largest_contour, True)
     approx = cv2.approxPolyDP(largest_contour, epsilon, True)
 
     if len(approx) != 4:
         raise ValueError("Could not detect exactly 4 corners for the table.")
 
+    # Draw the detected bounds on the image
+    bounds_img = cv2.cvtColor(seg_img * 255, cv2.COLOR_GRAY2BGR)
+    cv2.drawContours(bounds_img, [approx], -1, (0, 255, 0), 2)
+    cv2.imshow("Table Bounds", bounds_img)
+    cv2.waitKey(0)  # Wait for user input to close the visualization
+    cv2.destroyAllWindows()  # Close all OpenCV windows
+
     return np.squeeze(approx)  # Return as a 4x2 array
 
-def compute_homography_center_origin(table_corners):
-    """Compute homography matrix given table corners with center-origin coordinates."""
+def compute_homography(table_corners_img):
+    """Compute homography matrix given table corners with top-left-origin coordinates."""
 
-    # Given that a ping pong table is 2.74m x 1.525m
-    half_width = 2.74 / 2
-    half_height = 1.525 / 2
-
-    # Real-world coordinates with center of the table as origin
-    real_world_corners = np.array([
-        [-half_width, -half_height],  # Top-left
-        [half_width, -half_height],   # Top-right
-        [-half_width, half_height],   # Bottom-left
-        [half_width, half_height]     # Bottom-right
+    # Real-world coordinates of a ping pong table (length 2.74m, width 1.525m)
+    
+    table_corners_world = np.array([
+        [0, 0],
+        [TABLE_LENGTH, 0],
+        [TABLE_LENGTH, TABLE_WIDTH],
+        [0, TABLE_WIDTH]
     ], dtype=np.float32)
     
-    H, _ = cv2.findHomography(table_corners, real_world_corners)
+    H, _ = cv2.findHomography(table_corners_img, table_corners_world)
     return H
 
-def map_point_to_center_origin(point, homography_matrix):
-    """Map point from image frame to real-world coordinates with center of the table as origin."""
-    point_homogeneous = np.array([point[0], point[1], 1], dtype=np.float32).reshape(3, 1)
-    mapped_point = np.dot(homography_matrix, point_homogeneous)
-    mapped_point /= mapped_point[2]  # Normalize by the third value to get (x, y)
-    return mapped_point[0:2].flatten()
+def map_bounce_to_real_world(H, bounce_point_img):
+    bounce_point_img = np.array([bounce_point_img[0], bounce_point_img[1], 1]).reshape((3, 1))
+    bounce_point_world = np.dot(H, bounce_point_img)
+
+    # Normalize to get real-world coordinates
+    bounce_point_world = bounce_point_world / bounce_point_world[2]
+    return bounce_point_world[0:2].flatten()
 
 def merge_bounce_events(bounces, frame_threshold=5):
     """Merge bounce events that are within a certain number of frames."""
@@ -84,7 +92,7 @@ def merge_bounce_events(bounces, frame_threshold=5):
                 (last_bounce['position'][1] + bounce['position'][1]) / 2
             ]
             merged_bounces[-1] = {
-                "frame": bounce['frame'],  # Keep the latest frame number
+                "frame": bounce['frame'],  # TODO: set based on highest bounce confidence
                 "position": avg_position
             }
         else:
@@ -92,23 +100,23 @@ def merge_bounce_events(bounces, frame_threshold=5):
 
     return merged_bounces
 
-def visualize_bounces(bounces, table_dims):
+def visualize_bounces(bounces):
     """Visualize the table and mapped bounce points."""
-    table_width, table_height = int(table_dims[0] * 100), int(table_dims[1] * 100)  # Scale for visualization
-    visualization_img = np.ones((table_height, table_width, 3), dtype=np.uint8) * 255  # White background
+    # Scale factor for visualization (converting meters to centimeters)
+    scale_factor = 100
 
-    # Draw table boundary (for simplicity, placing the table at the center of the image)
-    origin_x = table_width // 2
-    origin_y = table_height // 2
+    # Create a blank white image
+    visualization_img = np.ones((int(TABLE_LENGTH * scale_factor), int(TABLE_WIDTH * scale_factor), 3), dtype=np.uint8) * 255
 
-    table_top_left = (origin_x - table_width // 2, origin_y - table_height // 2)
-    table_bottom_right = (origin_x + table_width // 2, origin_y + table_height // 2)
+    # Draw the table outline (scaled)
+    table_top_left = (0, 0)
+    table_bottom_right = (int(TABLE_LENGTH * scale_factor), int(TABLE_WIDTH * scale_factor))
     cv2.rectangle(visualization_img, table_top_left, table_bottom_right, (0, 0, 255), 3)
 
     # Draw bounce points
     for bounce in bounces:
-        point_x = int(bounce['position'][0] * 100) + origin_x
-        point_y = int(bounce['position'][1] * 100) + origin_y
+        point_x = int(bounce['position'][0] * scale_factor)
+        point_y = int(bounce['position'][1] * scale_factor)
         cv2.circle(visualization_img, (point_x, point_y), 5, (255, 0, 0), -1)  # Blue point
 
     # Display the visualization
@@ -136,7 +144,6 @@ def process_video(configs):
     frame_idx = 0
     w_original, h_original = 1920, 1080
 
-    table_dims = (2.74, 1.525)  # Real-world table dimensions in meters
     homography_saved = None
     bounces = []
 
@@ -159,10 +166,11 @@ def process_video(configs):
 
             if homography_saved is None:
                 table_mask = extract_table_mask(prediction_seg)
+                table_mask = cv2.resize(table_mask, (w_original, h_original))
 
                 try:
                     table_corners = find_table_bounds(table_mask)
-                    homography_saved = compute_homography_center_origin(table_corners)
+                    homography_saved = compute_homography(table_corners)
                     print("Homography Matrix:")
                     print(homography_saved)
                 except ValueError as e:
@@ -170,11 +178,11 @@ def process_video(configs):
             
             if homography_saved is not None:
                 if prediction_events[0] > configs.bounce_thresh:
-                    real_world_position = map_point_to_center_origin(prediction_ball_final, homography_saved)
-                    print("Real-world coordinates of the ball (center-origin):", real_world_position)
+                    real_world_position = map_bounce_to_real_world(homography_saved, prediction_ball_final)
+                    print("Real-world coordinates of the ball (top-left origin):", real_world_position)
                     bounces.append({
                         "frame": frame_idx,
-                        "position": real_world_position.tolist()
+                        "position": real_world_position.tolist(),
                     })
 
             frame_idx += 1
@@ -191,7 +199,7 @@ def process_video(configs):
     print("Saved output to bounce_positions.json")
 
     # Visualize the bounces
-    visualize_bounces(merged_bounces, table_dims)
+    visualize_bounces(merged_bounces)
 
 if __name__ == '__main__':
     configs = parse_configs()
