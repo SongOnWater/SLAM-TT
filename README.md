@@ -32,11 +32,13 @@ Clone recursively to include required submodules
 git clone --recursive https://github.com/ccs-cs1l-f24/SLAM-TT.git
 ```
 
-### 1. TTNet
+### 2. TTNet
 
 Full Instructions [Here](TTNet/README.md)
 
 ```bash
+cd TTNet
+
 conda create -n ttnet python=3.9
 conda activate ttnet
 
@@ -50,16 +52,22 @@ sudo apt-get install libgl1-mesa-glx
 sudo apt-get install xdg-utils
 ```
 
-### 2. WHAM
+Usage
+```bash
+TODO: train, demo, and export to json
+```
+
+### 3. WHAM
 
 Start here: [Installation](https://github.com/yohanshin/WHAM/blob/main/docs/INSTALL.md)
 
 Usage (replace with any video path):
 ```
+cd WHAM
 python demo.py --video examples/IMG_9732.mov --visualize --save_pkl
 ```
 
-### 3. WHAM TO BLENDER
+### 4. WHAM TO BLENDER
 
 Full Instructions: https://youtu.be/7heJSFGzxAI?si=8c1HD1Ux81eDpkLu&t=380
 Note that I modified the script to be compatible with Blender>=4.1, so use the files I provide in this repo
