@@ -59,7 +59,20 @@ TODO: train, demo, and export to json
 
 ### 3. WHAM
 
+```bash
+cd WHAM
+```
+
 Start here: [Installation](https://github.com/yohanshin/WHAM/blob/main/docs/INSTALL.md)
+
+Fetch dataset:
+```bash
+bash fetch_demo_data.sh
+
+# Dummy account for https://smpl.is.tue.mpg.de/
+# Username: the@writeme.com
+# Password: 1234567890
+```
 
 Usage (replace with any video path):
 ```
