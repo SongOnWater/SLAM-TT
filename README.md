@@ -1,7 +1,7 @@
-# SLAM-TT
+# SLAM-TT: Simultaneous Localization and Mapping for Table Tennis
 
-Based on:
-TTNet Repo: https://github.com/AugustRushG/TTNet-Real-time-Analysis-System-for-Table-Tennis-Pytorch
+Original TTNet Repo: https://github.com/AugustRushG/TTNet-Real-time-Analysis-System-for-Table-Tennis-Pytorch
+
 WHAM Repo: https://github.com/yohanshin/WHAM
 
 ---

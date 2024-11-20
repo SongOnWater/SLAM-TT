@@ -14,7 +14,6 @@ from models.model_utils import create_model, load_pretrained_model
 from config.config import parse_configs
 from utils.post_processing import post_processing
 from utils.misc import time_synchronized
-# from pose.detect_pose import detect_pose
 
 def process_video(configs):
     # Load the video and model
@@ -32,6 +31,8 @@ def process_video(configs):
     w_resize, h_resize = 320, 128
     w_ratio = w_original / w_resize
     h_ratio = h_original / h_resize
+
+    
 
     # For each frame
     with torch.no_grad():
@@ -58,9 +59,6 @@ def process_video(configs):
 
             # If it bounced, find position relative to table
 
-            # Get the landmarks for left and right
-            # right_world_landmarks = detect_pose(img=img, blackout_left=True, frame_timestamp_ms=frame_timestamp_ms)
-            # left_world_landmarks = detect_pose(img=img, blackout_left=False, frame_timestamp_ms=frame_timestamp_ms)
 
             frame_data = {
                 "frame": frame_cnt,
