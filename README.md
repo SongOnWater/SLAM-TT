@@ -15,14 +15,22 @@ To ensure smooth setup and functionality, make sure your system meets the follow
 - Operating System: Linux or Windows Subsystem for Linux (WSL)
 - Graphics: Nvidia GPU with CUDA support.
 
-Install [conda](https://docs.anaconda.com/miniconda/install/#quick-command-line-install)
-
 ### Overview
 
 TTNet: Used to detect ball position and bounce
 WHAM: Used to detect player movements
 WHAM_TO_BLENDER: Used to take WHAM ```.pkl``` output and export it to blender
 Unity: Used to render the entire scene
+
+### 1. Setup
+
+
+Install [conda](https://docs.anaconda.com/miniconda/install/#quick-command-line-install) if you haven't already
+
+Clone recursively to include required submodules
+```bash
+git clone --recursive https://github.com/ccs-cs1l-f24/SLAM-TT.git
+```
 
 ### 1. TTNet
 
