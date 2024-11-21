@@ -18,10 +18,10 @@ To ensure smooth setup and functionality, make sure your system meets the follow
 
 ### Overview
 
-TTNet: Used to detect ball position and bounce
-WHAM: Used to detect player movements
-WHAM_TO_BLENDER: Used to take WHAM ```.pkl``` output and export it to blender
-Unity: Used to render the entire scene
+- TTNet: Used to detect ball position and bounce
+- WHAM: Used to detect player movements
+- WHAM_TO_BLENDER: Used to take WHAM ```.pkl``` output and export it to blender
+- Unity: Used to render the entire scene
 
 ### 1. Setup
 
