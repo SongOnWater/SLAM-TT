@@ -26,7 +26,10 @@ To ensure smooth setup and functionality, make sure your system meets the follow
 ### 1. Setup
 
 
-Install [conda](https://docs.anaconda.com/miniconda/install/#quick-command-line-install) if you haven't already
+- Install [Conda](https://docs.anaconda.com/miniconda/install/#quick-command-line-install) (highly recommended)
+- Install [CUDA 11.8](https://developer.nvidia.com/cuda-11-8-0-download-archive) (required for WHAM)
+- Install [Blender](https://www.blender.org/download/) (required for WHAM_TO_BLENDER)
+- Install [Unity](https://unity.com/download) (required to render entire scene)
 
 Clone recursively to include required submodules
 ```bash

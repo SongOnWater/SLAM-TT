@@ -22,7 +22,7 @@ def process_video(configs):
     frame_rate = video_loader.video_fps
 
     if configs.save_demo_output:
-        output_path = "output_video.mp4"
+        output_path = "../results/output_video.mp4"
         fourcc = cv2.VideoWriter_fourcc(*'MP4V')  # Codec for the video format
         video_writer = cv2.VideoWriter(output_path, fourcc, frame_rate, (1920, 1080))
 
@@ -108,7 +108,7 @@ def plot_detection(img, ball_pos, seg_img, events):
 
 if __name__ == '__main__':
     configs = parse_configs()
-    configs.video_path = "../dataset/test/videos/test_1_trimmed.mp4"
+    configs.video_path = "demo_video.mp4"
     configs.gpu_idx = 0
     configs.pretrained_path = "../checkpoints/ttnet.pth"
     configs.show_image = True
