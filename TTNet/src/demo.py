@@ -111,7 +111,7 @@ if __name__ == '__main__':
     configs.video_path = "../dataset/test/videos/test_1_trimmed.mp4"
     configs.gpu_idx = 0
     configs.pretrained_path = "../checkpoints/ttnet.pth"
-    configs.show_image = False
+    configs.show_image = True
     configs.save_demo_output = True
     configs.no_seg = True
     process_video(configs=configs)

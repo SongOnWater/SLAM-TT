@@ -1,7 +1,8 @@
 # SLAM-TT: Simultaneous Localization and Mapping for Table Tennis
 
-Original TTNet Repo: https://github.com/AugustRushG/TTNet-Real-time-Analysis-System-for-Table-Tennis-Pytorch
+Transform monocular footage of a table tennis game and transform it into a full 3D recreation. This process is done in three stages: ball/bounce detection with TTNet, 3D human poses detection with WHAM, and finally exporting everything to Unity.
 
+Original TTNet Repo: https://github.com/AugustRushG/TTNet-Real-time-Analysis-System-for-Table-Tennis-Pytorch
 WHAM Repo: https://github.com/yohanshin/WHAM
 
 ---
@@ -34,8 +35,8 @@ git clone --recursive https://github.com/ccs-cs1l-f24/SLAM-TT.git
 
 ### 2. TTNet
 
-Full Instructions [Here](TTNet/README.md)
 
+Install Dependencies
 ```bash
 cd TTNet
 
@@ -52,31 +53,36 @@ sudo apt-get install libgl1-mesa-glx
 sudo apt-get install xdg-utils
 ```
 
+Download ```ttnet.pth``` from the [release tab](https://github.com/ccs-cs1l-f24/SLAM-TT/releases/tag/v1.0.0). Place the file in ```TTNet/checkpoints/ttnet.pth```
+
+
 Usage
 ```bash
+# Test ball detection
+python src/demo.py
+
 TODO: train, demo, and export to json
 ```
 
-### 3. WHAM
+See more details [here](TTNet/README.md)
 
-```bash
-cd WHAM
-```
+### 3. WHAM - [Installation Guide](https://github.com/yohanshin/WHAM/blob/main/docs/INSTALL.md)
 
-Start here: [Installation](https://github.com/yohanshin/WHAM/blob/main/docs/INSTALL.md)
+Follow the steps linked above to install WHAM
 
 Fetch dataset:
 ```bash
+cd WHAM
 bash fetch_demo_data.sh
 
 # Dummy account for https://smpl.is.tue.mpg.de/
-# Username: the@writeme.com
-# Password: 1234567890
+#     Username: the@writeme.com
+#     Password: 1234567890
 ```
 
-Usage (replace with any video path):
-```
-cd WHAM
+Generate 3D mesh from video
+```bash
+# Replace examples/IMG_9732.mov with any video
 python demo.py --video examples/IMG_9732.mov --visualize --save_pkl
 ```
 
@@ -85,8 +91,14 @@ python demo.py --video examples/IMG_9732.mov --visualize --save_pkl
 Full Instructions: https://youtu.be/7heJSFGzxAI?si=8c1HD1Ux81eDpkLu&t=380
 Note that I modified the script to be compatible with Blender>=4.1, so use the files I provide in this repo
 
-1. Register an account and download smpl model for Maya. (Hint: Select "Download version 1.0.2 for Maya"): https://smpl.is.tue.mpg.de/download.php
-2. Open WHAM_TO_BLENDER.blend
+```bash
+# Dummy account for https://smpl.is.tue.mpg.de/
+#     Username: the@writeme.com
+#     Password: 1234567890
+```
+
+1. Select "Download version 1.0.2 for Maya": https://smpl.is.tue.mpg.de/download.php
+2. Open ```WHAM_TO_BLENDER/WHAM_TO_BLENDER.blend```
 3. Select ```Joblib Install``` in the script selection menu and press the Play button (Note: this will install joblib to your global pip packages)
 4. Select ```FINAL_Script```
 5. Modify these lines:
