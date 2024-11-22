@@ -16,8 +16,8 @@ from utils.post_processing import post_processing
 from utils.misc import time_synchronized
 from utils.homography import extract_table_mask, find_table_bounds, compute_homography, map_bounce_to_real_world2, is_ball_in_bounds
 
-TABLE_WIDTH = 2740  # cm
-TABLE_LENGTH = 1525  # cm
+TABLE_WIDTH = 2740  # mm
+TABLE_LENGTH = 1525  # mm
 
 def merge_bounce_events_highest_confidence(bounces, max_frame_diff=9):
     # Sort bounces by frame to make it easier to merge
