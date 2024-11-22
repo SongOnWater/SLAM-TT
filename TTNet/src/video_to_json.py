@@ -9,7 +9,7 @@ import json
 
 sys.path.append('./')
 
-from data_process.ttnet_video_loader_v2 import TTNet_Video_Loader_V2
+from data_process.ttnet_video_loader import TTNet_Video_Loader_V2
 from models.model_utils import create_model, load_pretrained_model
 from config.config import parse_configs
 from utils.post_processing import post_processing
