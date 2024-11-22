@@ -1,6 +1,8 @@
 # SLAM-TT: Simultaneous Localization and Mapping for Table Tennis
 
-Transform monocular footage of a table tennis game and transform it into a full 3D recreation. This process is done in three stages: ball/bounce detection with TTNet, 3D human poses detection with WHAM, and finally exporting everything to Unity.
+Transform monocular footage of a table tennis game and transform it into a full 3D recreation. This process is done in three stages: ball/bounce detection with TTNet, 3D human poses detection with WHAM, and full scene rendering with Unity.
+
+![demo_original](docs/demo_original.gif) ![demo](docs/demo_transformed.gif)
 
 Original TTNet Repo: https://github.com/AugustRushG/TTNet-Real-time-Analysis-System-for-Table-Tennis-Pytorch
 WHAM Repo: https://github.com/yohanshin/WHAM
@@ -27,7 +29,7 @@ To ensure smooth setup and functionality, make sure your system meets the follow
 
 
 - Install [Conda](https://docs.anaconda.com/miniconda/install/#quick-command-line-install) (highly recommended)
-- Install [CUDA 11.8](https://developer.nvidia.com/cuda-11-8-0-download-archive) (required for WHAM)
+- Install [CUDA 11.8](https://developer.nvidia.com/cuda-11-8-0-download-archive) (required for WHAM, the human pose detector)
 - Install [Blender](https://www.blender.org/download/) (required for WHAM_TO_BLENDER)
 - Install [Unity](https://unity.com/download) (required to render entire scene)
 

@@ -197,27 +197,21 @@ def process_video(configs):
     merged_bounces = merge_bounce_events(bounces)
 
     # Save bounce information to a JSON file
-    with open('bounce_positions.json', 'w') as f:
+    with open('../results/bounce_positions.json', 'w') as f:
         output = {
             "bounces": merged_bounces
         }
         json.dump(output, f, indent=2)
-    print("Saved output to bounce_positions.json")
+    print("Saved output to ../results/bounce_positions.json")
 
     # Visualize the bounces
     visualize_bounces(merged_bounces, enable_labels=True)
-
-    # print("Testing homography")
-    # print(map_bounce_to_real_world2(homography_saved, (501, 536)))
-    # print(map_bounce_to_real_world2(homography_saved, (297, 646)))
-    # print(map_bounce_to_real_world2(homography_saved, (1000, 1000)))
-    # print(map_bounce_to_real_world2(homography_saved, (750, 750)))
 
     cv2.destroyAllWindows()
 
 if __name__ == '__main__':
     configs = parse_configs()
-    configs.video_path = "demo_video.mp4"
+    configs.video_path = "demo_video_short.mp4"
     configs.gpu_idx = 0
     configs.pretrained_path = "../checkpoints/ttnet.pth"
     configs.show_image = False
