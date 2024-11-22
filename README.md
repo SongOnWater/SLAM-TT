@@ -95,23 +95,34 @@ Full Instructions: https://youtu.be/7heJSFGzxAI?si=8c1HD1Ux81eDpkLu&t=380
 Note that I modified the script to be compatible with Blender>=4.1, so use the files I provide in this repo
 
 ```bash
+# I already included necessary files, which I got here:
+# Select "Download version 1.0.2 for Maya": https://smpl.is.tue.mpg.de/download.php
 # Dummy account for https://smpl.is.tue.mpg.de/
 #     Username: the@writeme.com
 #     Password: 1234567890
 ```
 
-1. Select "Download version 1.0.2 for Maya": https://smpl.is.tue.mpg.de/download.php
-2. Open ```WHAM_TO_BLENDER/WHAM_TO_BLENDER.blend```
-3. Select ```Joblib Install``` in the script selection menu and press the Play button (Note: this will install joblib to your global pip packages)
-4. Select ```FINAL_Script```
-5. Modify these lines:
+1. Open ```WHAM_TO_BLENDER/WHAM_TO_BLENDER.blend```
+2. Select ```Joblib Install``` in the script selection menu and press the Play button (Note: this will install joblib to your global pip packages, but you can mess around with it to use venv. Sorry!)
+
+![Joblib Install Image](docs/WHAM_TO_BLENDER_1.png)
+
+3. Select ```FINAL_Script```
+4. Modify these lines:
 ```python
 character = 0 # There are two players. Choose the index to focus on
 pre_date = r"\\wsl.localhost\Ubuntu\home\dylan\Coding\SLAM-TT\WHAM\output\demo\test_1_trimmed\wham_output.pkl" # Set this to your .pkl output path from the previous step
 packages_path= r"c:\users\dylan\appdata\roaming\python\python311\site-packages" # Add your python packages to the path (wherever you installed joblib)
 ```
-6. Press the Play button
-7. Set the x rotation to -90deg
+5. Press the Play button
+
+![Run Script Image](docs/WHAM_TO_BLENDER_2.png)
+
+6. Set the x rotation to -90deg and FPS to your video's original framerate
+
+![X Rotation Image](docs/WHAM_TO_BLENDER_3.png) ![Framerate Image](docs/WHAM_TO_BLENDER_4.png)
+
+7. Export as FBX
 
 ### 4. Move Everything to Unity
 
