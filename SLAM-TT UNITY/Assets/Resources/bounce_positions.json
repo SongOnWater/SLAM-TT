@@ -1,0 +1,112 @@
+{
+  "bounces": [
+    {
+      "frame": 60,
+      "position": [
+        362,
+        176
+      ],
+      "pixel_coord": [
+        585,
+        550
+      ],
+      "bounce_confidence": "0.76859677"
+    },
+    {
+      "frame": 102,
+      "position": [
+        2727,
+        789
+      ],
+      "pixel_coord": [
+        1322,
+        627
+      ],
+      "bounce_confidence": "0.7024388"
+    },
+    {
+      "frame": 150,
+      "position": [
+        354,
+        125
+      ],
+      "pixel_coord": [
+        587,
+        547
+      ],
+      "bounce_confidence": "0.8377861"
+    },
+    {
+      "frame": 194,
+      "position": [
+        2633,
+        1029
+      ],
+      "pixel_coord": [
+        1304,
+        647
+      ],
+      "bounce_confidence": "0.7182674"
+    },
+    {
+      "frame": 239,
+      "position": [
+        250,
+        19
+      ],
+      "pixel_coord": [
+        567,
+        540
+      ],
+      "bounce_confidence": "0.82772934"
+    },
+    {
+      "frame": 292,
+      "position": [
+        2676,
+        1123
+      ],
+      "pixel_coord": [
+        1327,
+        657
+      ],
+      "bounce_confidence": "0.8202133"
+    },
+    {
+      "frame": 336,
+      "position": [
+        635,
+        238
+      ],
+      "pixel_coord": [
+        658,
+        557
+      ],
+      "bounce_confidence": "0.74331206"
+    },
+    {
+      "frame": 385,
+      "position": [
+        2655,
+        1215
+      ],
+      "pixel_coord": [
+        1326,
+        666
+      ],
+      "bounce_confidence": "0.7619429"
+    },
+    {
+      "frame": 433,
+      "position": [
+        325,
+        77
+      ],
+      "pixel_coord": [
+        583,
+        544
+      ],
+      "bounce_confidence": "0.95745164"
+    }
+  ]
+}

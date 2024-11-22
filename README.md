@@ -6,7 +6,7 @@ Original Clip|Transformed Clip
 --|--
 ![demo_original](docs/demo_original.gif) | ![demo](docs/demo_transformed.gif)
 
-Original TTNet Repo: https://github.com/AugustRushG/TTNet-Real-time-Analysis-System-for-Table-Tennis-Pytorch
+TTNet Repo: https://github.com/AugustRushG/TTNet-Real-time-Analysis-System-for-Table-Tennis-Pytorch
 WHAM Repo: https://github.com/yohanshin/WHAM
 
 ---
@@ -32,8 +32,8 @@ To ensure smooth setup and functionality, make sure your system meets the follow
 
 - Install [Conda](https://docs.anaconda.com/miniconda/install/#quick-command-line-install) (highly recommended)
 - Install [CUDA 11.8](https://developer.nvidia.com/cuda-11-8-0-download-archive) (required for WHAM, the human pose detector)
-- Install [Blender](https://www.blender.org/download/) (required for WHAM_TO_BLENDER)
-- Install [Unity](https://unity.com/download) (required to render entire scene)
+- Install [Blender](https://www.blender.org/download/) (tested on 4.2.3 LTS)
+- Install [Unity](https://unity.com/download) (tested on 6000.0.9f1 for Windows)
 
 Clone recursively to include required submodules
 ```bash
@@ -65,10 +65,11 @@ Download ```ttnet.pth``` from the [release tab](https://github.com/ccs-cs1l-f24/
 
 Usage
 ```bash
-# Test ball detection
+# (Optional) Test ball detection model
 python src/demo.py
 
-TODO: train, demo, and export to json
+# Detects ball bounces and uses homography to map coordinates relative to table. Exports to TTNet/results/bounce_positions.json
+python src/get_bounces.py
 ```
 
 See more details [here](TTNet/README.md)
@@ -114,7 +115,7 @@ Note that I modified the script to be compatible with Blender>=4.1, so use the f
 3. Select ```FINAL_Script```
 4. Modify these lines:
 ```python
-character = 0 # There are two players. Choose the index to focus on
+character = 0 # There are two players. Choose the index to focus on (0 or 1)
 pre_date = r"\\wsl.localhost\Ubuntu\home\dylan\Coding\SLAM-TT\WHAM\output\demo\test_1_trimmed\wham_output.pkl" # Set this to your .pkl output path from the previous step
 packages_path= r"c:\users\dylan\appdata\roaming\python\python311\site-packages" # Add your python packages to the path (wherever you installed joblib)
 ```
@@ -130,4 +131,22 @@ packages_path= r"c:\users\dylan\appdata\roaming\python\python311\site-packages" 
 
 ### 4. Move Everything to Unity
 
-TODO:
+1. Download and Extract UNITY.7z
+
+2. Add ```.fbx``` models to ```Models``` folder
+
+![Import FBX to Unity](docs/UNITY_1.png)
+
+3. Place models reasonably in scene and add an ```Animator``` component. Add the corresponding animations to a ```AnimationController``` and attach it (shown in picture and demo scene)
+
+![Add Models to Scene](docs/UNITY_2.png)
+
+4. Add ping pong paddle model to the players' hand. Demo model is found at ```Models/LowPolyTableTennis/Models/PingPongBat.fbx```
+
+![Add Ping Pong Paddle](docs/UNITY_3.png)
+
+5. Drag both paddles to the Ball Manager's ```Ball Interpolation``` component. Set the FPS to your desired playback speed
+
+![Add Paddle References to Script](docs/UNITY_4.png)
+
+
