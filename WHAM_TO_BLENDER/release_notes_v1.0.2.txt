@@ -1,0 +1,59 @@
+Release Notes [SMPL_maya_plugin_v1.0.2  - Nov 9, 2015]
+======================================================
+
+
+Overview: 
+---------
+This release includes bug fixes in the plugin code and related data files. 
+It also updates the plugin for more user-friendly control. 
+
+
+
+Bug Fixes:
+----------
+- 	Shape and Pose blend shapes are both created as one blend shape node inside the FBX files. 
+	These were two separate nodes in previous version, which is not compatible with some animation 
+	software.
+- 	The shape blend shapes for subjects of different body shapes now retain the values for the shape.
+	The 10 shape blend shapes were reset to 0 in previous version of sample animation files (e.g. 
+	'v1_f_lbs_10_207_0_mosh_cmu_0511.fbx', etc.). These should be 0 only for the basic model (i.e. 
+	v1_f_lbs_10_207_0.fbx and v1_m_lbs_10_207_0.fbx). 
+- 	Fixed error in 'Recompute Skeleton' function. The previous version of the plugin and data file 
+	('joints_mat_v1.0.0.pkl') used female joint-regressor to create joint positions for both male 
+	and female models. The plugin and data file have been updated to correctly recompute skeleton 
+	for both male and female models.
+-	Versioning for all files is now consistent with the plugin version. Version-numbers for files 
+	associated with the Maya plugin will update with the plugin version.
+
+
+New Features:
+-------------
+- 	Set Mesh to Bind-Pose: Plugin now provides a button to automatically set the model to a 
+	T-pose (the bind-pose) position before recomputing the Skeleton.
+- 	Human-readable joints: joints are now named according to the joint position in the body 
+	instead of being named by numbers. 
+- 	Shape and Pose blend shape names are now shortened to 'Shape###' and 'Pose###' for easier 
+	control
+-	Set Keyframes: Plugin now shows checkboxes next to 'Apply Pose Blendshapes' buttons. The user 
+	can now choose to apply pose blendshapes with or without setting keyframes for the pose blendshapes.
+
+
+
+
+Etymology:
+----------
+Model: 				male or female mesh object in the FBX file
+Shape Blend Shapes: set of 10 blend shapes attached to each model that help change the body shape 
+					of the model realistically.
+Pose Blend Shapes:	set of 207 blend shapes attached to each model that deform with animation to
+					fix lbs-skinning problems and to create more realistic mesh deformations at joints.
+
+
+
+License:
+--------
+Copyright 2015 Naureen Mahmood and the Max Planck Gesellschaft.  All rights reserved.
+This software is provided for research purposes only.
+By using this software you agree to the terms of the SMPL Model license here http://smpl.is.tue.mpg.de/license
+
+For comments or questions, please email us at: smpl@tuebingen.mpg.de
