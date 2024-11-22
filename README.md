@@ -2,7 +2,9 @@
 
 Transform monocular footage of a table tennis game and transform it into a full 3D recreation. This process is done in three stages: ball/bounce detection with TTNet, 3D human poses detection with WHAM, and full scene rendering with Unity.
 
-![demo_original](docs/demo_original.gif) ![demo](docs/demo_transformed.gif)
+Original Clip|Transformed Clip
+--|--
+![demo_original](docs/demo_original.gif) | ![demo](docs/demo_transformed.gif)
 
 Original TTNet Repo: https://github.com/AugustRushG/TTNet-Real-time-Analysis-System-for-Table-Tennis-Pytorch
 WHAM Repo: https://github.com/yohanshin/WHAM
