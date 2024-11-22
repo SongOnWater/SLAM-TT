@@ -131,7 +131,7 @@ packages_path= r"c:\users\dylan\appdata\roaming\python\python311\site-packages" 
 
 ### 4. Move Everything to Unity
 
-1. Download and Extract UNITY.7z
+1. Open ```SLAM-TT Unity``` in Unity Hub
 
 2. Add ```.fbx``` models to ```Models``` folder
 
