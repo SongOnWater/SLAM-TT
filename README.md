@@ -6,6 +6,10 @@ Original Clip|Transformed Clip
 --|--
 ![demo_original](docs/demo_original.gif) | ![demo](docs/demo_transformed.gif)
 
+Multiple Perspectives
+--
+![demo](docs/demo_perspective.gif)
+
 TTNet Repo: https://github.com/AugustRushG/TTNet-Real-time-Analysis-System-for-Table-Tennis-Pytorch
 WHAM Repo: https://github.com/yohanshin/WHAM
 

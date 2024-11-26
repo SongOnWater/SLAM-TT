@@ -1,0 +1,172 @@
+{
+  "bounces": [
+    {
+      "frame": 42,
+      "position": [
+        750,
+        200
+      ],
+      "pixel_coord": [
+        714,
+        621
+      ],
+      "bounce_confidence": "0.7648341"
+    },
+    {
+      "frame": 90,
+      "position": [
+        2272,
+        534
+      ],
+      "pixel_coord": [
+        1163,
+        656
+      ],
+      "bounce_confidence": "0.880689"
+    },
+    {
+      "frame": 169,
+      "position": [
+        280,
+        213
+      ],
+      "pixel_coord": [
+        586,
+        622
+      ],
+      "bounce_confidence": "0.71479994"
+    },
+    {
+      "frame": 249,
+      "position": [
+        2717,
+        1057
+      ],
+      "pixel_coord": [
+        1356,
+        722
+      ],
+      "bounce_confidence": "0.8089138"
+    },
+    {
+      "frame": 325,
+      "position": [
+        165,
+        1031
+      ],
+      "pixel_coord": [
+        497,
+        711
+      ],
+      "bounce_confidence": "0.9157675"
+    },
+    {
+      "frame": 384,
+      "position": [
+        2686,
+        129
+      ],
+      "pixel_coord": [
+        1262,
+        615
+      ],
+      "bounce_confidence": "0.7762898"
+    },
+    {
+      "frame": 519,
+      "position": [
+        54,
+        616
+      ],
+      "pixel_coord": [
+        497,
+        662
+      ],
+      "bounce_confidence": "0.8616942"
+    },
+    {
+      "frame": 599,
+      "position": [
+        2106,
+        827
+      ],
+      "pixel_coord": [
+        1126,
+        690
+      ],
+      "bounce_confidence": "0.70317984"
+    },
+    {
+      "frame": 680,
+      "position": [
+        248,
+        749
+      ],
+      "pixel_coord": [
+        544,
+        677
+      ],
+      "bounce_confidence": "0.8474349"
+    },
+    {
+      "frame": 788,
+      "position": [
+        2524,
+        951
+      ],
+      "pixel_coord": [
+        1277,
+        707
+      ],
+      "bounce_confidence": "0.71237135"
+    },
+    {
+      "frame": 854,
+      "position": [
+        109,
+        246
+      ],
+      "pixel_coord": [
+        538,
+        625
+      ],
+      "bounce_confidence": "0.7483307"
+    },
+    {
+      "frame": 946,
+      "position": [
+        2141,
+        761
+      ],
+      "pixel_coord": [
+        1134,
+        682
+      ],
+      "bounce_confidence": "0.864108"
+    },
+    {
+      "frame": 1019,
+      "position": [
+        1459,
+        361
+      ],
+      "pixel_coord": [
+        912,
+        637
+      ],
+      "bounce_confidence": "0.7019788"
+    },
+    {
+      "frame": 1054,
+      "position": [
+        1717,
+        279
+      ],
+      "pixel_coord": [
+        986,
+        629
+      ],
+      "bounce_confidence": "0.72870886"
+    }
+  ]
+}

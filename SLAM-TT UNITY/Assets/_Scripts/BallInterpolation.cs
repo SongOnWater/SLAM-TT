@@ -15,6 +15,7 @@ public class BallInterpolation : MonoBehaviour
     public float frameRate = 120f; // Assuming video frame rate is 30 FPS
     public bool previewBallPlacement = false;
     public bool receivingPaddleLeft = false; // Variable to determine who served first
+    public bool loop = true;
 
     // Table dimensions in millimeters (from top-left origin)
     private const float TABLE_WIDTH_MM = 2740f;
@@ -70,10 +71,13 @@ public class BallInterpolation : MonoBehaviour
 
     private void Update()
     {
-        if (bounces == null || bounces.Count == 0 || currentBounceIndex >= bounces.Count - 1)
+        if (bounces == null || bounces.Count == 0)
         {
             return;
         }
+
+        if (currentBounceIndex >= bounces.Count - 1 && loop)
+            currentBounceIndex = 0;
 
         elapsedTime += Time.deltaTime;
         float timeFraction = elapsedTime / (timePerFrame * (bounces[currentBounceIndex + 1].frame - bounces[currentBounceIndex].frame));
