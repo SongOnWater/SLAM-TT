@@ -94,7 +94,10 @@ bash fetch_demo_data.sh
 
 Generate 3D mesh from video
 ```bash
-# Replace examples/IMG_9732.mov with any video
+# Setup conda env in the guide linked above
+conda activate wham
+
+# Replace examples/IMG_9732.mov with the video from the previous step
 python demo.py --video examples/IMG_9732.mov --visualize --save_pkl
 ```
 
