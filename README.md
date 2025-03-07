@@ -82,6 +82,8 @@ python src/demo.py
 python src/get_bounces.py
 ```
 
+![Result Image](docs/ttnet_1.png)
+
 See more details [here](TTNet/README.md)
 
 ### 3. WHAM - [Installation Guide](https://github.com/yohanshin/WHAM/blob/main/docs/INSTALL.md)
@@ -106,6 +108,8 @@ conda activate wham
 # Replace examples/IMG_9732.mov with the video from the previous step
 python demo.py --video examples/IMG_9732.mov --visualize --save_pkl
 ```
+
+![WHAM Result](docs/wham_1.png)
 
 ### 4. WHAM TO BLENDER
 
