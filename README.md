@@ -14,9 +14,11 @@ YouTube Demo
 --
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/F_HpfIQpiJo/0.jpg)](https://www.youtube.com/watch?v=F_HpfIQpiJo)
 
-Resources
---
-- TTNet Repo: https://github.com/AugustRushG/TTNet-Real-time-Analysis-System-for-Table-Tennis-Pytorch
+## Acknowledgements
+
+- TTNet Paper: https://arxiv.org/abs/2004.09927
+- TTNet Unofficial Implementation: https://github.com/AugustRushG/TTNet-Real-time-Analysis-System-for-Table-Tennis-Pytorch
+- WHAM Website: https://wham.is.tue.mpg.de/
 - WHAM Repo: https://github.com/yohanshin/WHAM
 
 ---
